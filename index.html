@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="TapMakerWork — TapTap Maker 第三方开源桌面 IDE。真 Runtime 画面选控件、改样式、管交付，支持项目 MCP。macOS / Windows。"
+    />
+    <meta name="theme-color" content="#7C3AED" />
+    <title>TapMakerWork · TapTap Maker 桌面 IDE</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="#top" aria-label="TapMakerWork 首页">
+          <svg class="brand-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="1.5" y="1.5" width="25" height="25" rx="6" stroke="#7C3AED" stroke-width="1.5" />
+            <path d="M7 8.5h8.5M11.25 8.5V20" stroke="#EC4899" stroke-width="1.6" stroke-linecap="round" />
+            <path d="M16 19.5h5M18.5 17v5" stroke="#7C3AED" stroke-width="1.6" stroke-linecap="round" />
+            <rect x="5.5" y="12" width="7" height="5" rx="1" stroke="#A78BFA" stroke-width="1.2" />
+          </svg>
+          TapMakerWork
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="打开菜单"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          id="nav-toggle"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M3 5h12M3 9h12M3 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="#features">功能</a></li>
+          <li><a href="#arch">架构</a></li>
+          <li><a href="#download">下载</a></li>
+          <li><a href="#boundary">边界</a></li>
+          <li><a href="#repos">仓库</a></li>
+          <li class="nav-cta">
+            <a
+              class="btn btn-primary btn-sm"
+              href="https://gitee.com/AndroidSUP/tap-maker-work/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              >下载安装包</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">TapTap Maker · 第三方桌面 IDE</p>
+            <h1>在真 Runtime 画面上改 UI，而不是盲猜</h1>
+            <p class="hero-lead">
+              TapMakerWork 把官方 Maker 能力组合成可视化工作台：画面内选控件、拖拽改样式、内嵌预览与真机镜像，并把环境 / 项目 / 构建就绪度串成一条交付线。
+            </p>
+            <div class="hero-actions">
+              <a
+                class="btn btn-primary"
+                href="https://gitee.com/AndroidSUP/tap-maker-work/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+                >前往 Gitee 下载</a
+              >
+              <a
+                class="btn btn-secondary"
+                href="https://gitee.com/AndroidSUP/tap-maker-work"
+                target="_blank"
+                rel="noopener noreferrer"
+                >查看源码主仓</a
+              >
+            </div>
+            <div class="badge-row">
+              <span class="badge">macOS / Windows</span>
+              <span class="badge">开源免费 · MIT</span>
+              <span class="badge">项目级 MCP</span>
+              <span class="badge badge-warn">非 TapTap 官方产品</span>
+            </div>
+          </div>
+
+          <aside class="viewfinder" aria-label="Runtime 活编示意">
+            <div class="vf-chrome">
+              <div class="vf-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="vf-title">Runtime · scripts/ui/HomePage.lua</div>
+              <div class="vf-live">live-edit</div>
+            </div>
+            <div class="vf-stage">
+              <div class="scene-sky" aria-hidden="true"></div>
+              <div class="scene-ground" aria-hidden="true"></div>
+              <div class="scene-hud-top">
+                <div class="hp-bar" aria-hidden="true"><i></i></div>
+                <div class="coin-chip">12,480</div>
+              </div>
+              <div class="hit hit-a" aria-hidden="true"></div>
+              <div class="hit hit-b" aria-hidden="true"></div>
+              <div class="hit hit-c" aria-hidden="true"></div>
+              <div class="widget widget-title">关卡标题</div>
+              <div class="widget widget-btn">开始挑战</div>
+              <div class="widget widget-icon">背包</div>
+              <div class="selection" aria-hidden="true">
+                <span class="handle"></span><span class="handle"></span><span class="handle"></span
+                ><span class="handle"></span>
+              </div>
+            </div>
+            <div class="vf-panel">
+              <div class="vf-panel-block">
+                <strong>WIDGET</strong>
+                <code>BtnStart<br />path: Canvas/Main</code>
+              </div>
+              <div class="vf-panel-block">
+                <strong>STYLE PATCH</strong>
+                <code>SetStyle(size)</code><br />
+                <code class="ok">ui.json · synced</code>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="values">
+        <div class="container">
+          <div class="value-rail">
+            <article class="value-item">
+              <div class="num">01 / SEE</div>
+              <h3>真画面，不是替身</h3>
+              <p>采样官方 Runtime 最终帧，叠加控件命中框，点画面选控件。</p>
+            </article>
+            <article class="value-item">
+              <div class="num">02 / EDIT</div>
+              <h3>拖一下就改到</h3>
+              <p>画面内拖移、八向缩放、键盘微调；属性改动防抖同步到旁路 UI 草稿。</p>
+            </article>
+            <article class="value-item">
+              <div class="num">03 / SHIP</div>
+              <h3>交付链路可见</h3>
+              <p>环境、项目、Runtime、预览日志、构建就绪度集中管理，不自动乱发布。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section features" id="features">
+        <div class="container">
+          <header class="section-head">
+            <p class="section-kicker">CAPABILITIES</p>
+            <h2>功能按工作台分区，不堆 Demo 按钮</h2>
+            <p>围绕「看得见 → 改得动 → 交得出去」组织，Lua 继续负责行为，视觉结构可旁路沉淀。</p>
+          </header>
+
+          <div class="rack">
+            <article class="rack-row">
+              <div class="rack-id">01</div>
+              <div>
+                <h3>可视化与 Runtime</h3>
+                <p>把最终效果和编辑操作放在同一画布，减少改完再盲猜的循环。</p>
+              </div>
+              <ul class="rack-list">
+                <li>真 Runtime 视图：最终帧 + 控件命中框叠加</li>
+                <li>活编：拖移、八向缩放、键盘微调、属性面板</li>
+                <li><code>*.ui.json</code> 视觉草稿；Lua 负责行为</li>
+                <li>Cocos 风格变换快捷键与多选吸附</li>
+                <li>可选项目适配器，入口自动备份</li>
+              </ul>
+            </article>
+
+            <article class="rack-row">
+              <div class="rack-id">02</div>
+              <div>
+                <h3>项目与交付</h3>
+                <p>从打开项目到构建就绪，状态与证据一条线可见。</p>
+              </div>
+              <ul class="rack-list">
+                <li>原创交付工作台：阶段 / Runtime / 构建就绪度</li>
+                <li>VS Code 风格 Git：暂存、提交、同步、提交图谱</li>
+                <li>语义资产审计与全项目 UI 发现</li>
+                <li>官方 Preview 状态、日志与生命周期适配</li>
+                <li>显式远程构建与测试码流程</li>
+              </ul>
+            </article>
+
+            <article class="rack-row">
+              <div class="rack-id">03</div>
+              <div>
+                <h3>桌面与 AI</h3>
+                <p>桌面宿主 + 项目级 MCP，让 AI 读项目与控件，而不是乱敲 Shell。</p>
+              </div>
+              <ul class="rack-list">
+                <li>Electron 宿主，macOS / Windows 安装包</li>
+                <li>发行更新走 Gitee 主仓，失败可手动下载回退</li>
+                <li>项目 MCP：文件、转换、快照、Runtime、预览与构建</li>
+                <li>离线内置 Monaco 编辑器，无 CDN 依赖</li>
+                <li>系统 Node.js 发现（PATH / 登录 shell / Homebrew / Volta）</li>
+              </ul>
+            </article>
+
+            <article class="rack-row">
+              <div class="rack-id">04</div>
+              <div>
+                <h3>安全边界</h3>
+                <p>增强官方工作流，而不是替换或重分发官方安装包。</p>
+              </div>
+              <ul class="rack-list">
+                <li>不修改官方 Maker 安装</li>
+                <li>Shell 面板在沙箱验证前有意禁用</li>
+                <li>适配器只写受管 hook，并备份原入口</li>
+                <li>MCP 不提供通用 shell</li>
+                <li>商标归 TapTap 及相关权利人所有</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="arch">
+        <div class="container">
+          <header class="section-head">
+            <p class="section-kicker">ARCHITECTURE</p>
+            <h2>组合官方能力，本地桥接可视化</h2>
+            <p>官方 CLI / Runtime 仍是预览、构建与测试码的权威；TapMakerWork 只做编排与增强。</p>
+          </header>
+
+          <div class="arch-panel">
+            <div class="arch-flow">
+              <div class="arch-node primary">Electron 桌面 / 控制台</div>
+              <div class="arch-arrow" aria-hidden="true"></div>
+              <div class="arch-node primary">Studio 可视化 IDE</div>
+              <div class="arch-arrow" aria-hidden="true"></div>
+              <div class="arch-node">本地 Editor Bridge（127.0.0.1）</div>
+              <div class="arch-arrow" aria-hidden="true"></div>
+              <div class="arch-split">
+                <div class="arch-node official">官方 Maker CLI</div>
+                <div class="arch-node">项目适配器（可选）</div>
+                <div class="arch-node">Project MCP</div>
+              </div>
+            </div>
+            <p class="arch-note">Preview / 构建 / 测试码依赖你本机已安装的官方 Maker 环境</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section download" id="download">
+        <div class="container">
+          <header class="section-head">
+            <p class="section-kicker">DOWNLOAD</p>
+            <h2>获取安装包</h2>
+            <p>协作与 PR 只认 Gitee 主仓；GitHub 仅作镜像下载。</p>
+          </header>
+
+          <div class="dl-grid">
+            <div class="dl-main">
+              <h3>Gitee 发行版（主）</h3>
+              <p>macOS 下载 <code>TapMakerWork-*-mac-*.dmg</code>，Windows 下载 <code>*-windows-*.exe</code>。版本号以主仓 <code>package.json</code> 与 Releases 为准。</p>
+              <div class="dl-actions">
+                <a
+                  class="btn btn-primary"
+                  href="https://gitee.com/AndroidSUP/tap-maker-work/releases"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >打开 Gitee Releases</a
+                >
+                <a
+                  class="btn btn-secondary"
+                  href="https://github.com/AndroidSix/TapMakerWork/releases"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub 镜像</a
+                >
+              </div>
+              <div class="dl-meta">
+                主仓 · gitee.com/AndroidSUP/tap-maker-work<br />
+                镜像 · github.com/AndroidSix/TapMakerWork
+              </div>
+            </div>
+
+            <div class="dl-side">
+              <div class="dl-card">
+                <h4>从源码启动</h4>
+                <p>
+                  <code>npm install</code> 后执行 <code>npm run dev:web</code>，浏览器打开
+                  <code>http://127.0.0.1:4173</code>；桌面宿主用 <code>npm run dev</code>。
+                </p>
+              </div>
+              <div class="dl-card">
+                <h4>Project MCP</h4>
+                <p>
+                  Bridge 构建后配置
+                  <code>node .../packages/bridge/dist/mcp.js</code>，供 Claude / Cursor / Codex 等读项目。
+                  <a href="https://gitee.com/AndroidSUP/tap-maker-work/blob/master/docs/MCP.md" target="_blank" rel="noopener noreferrer"
+                    >详见 MCP 文档</a
+                  >
+                </p>
+              </div>
+              <div class="dl-card">
+                <h4>许可证</h4>
+                <p>MIT © 2026 KayingAI。自由使用、修改、分发；保留版权与许可声明即可。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="boundary">
+        <div class="container">
+          <header class="section-head">
+            <p class="section-kicker">BOUNDARY</p>
+            <h2>请先读清产品边界</h2>
+            <p>这是社区增强工具，不是 TapTap 官方 IDE，也不分发官方安装包。</p>
+          </header>
+          <ul class="boundary-list">
+            <li>
+              <strong>非官方产品</strong>
+              <span>在官方 Maker CLI / Runtime 之上做可视化与交付增强。</span>
+            </li>
+            <li>
+              <strong>不修改官方安装</strong>
+              <span>预览、构建、测试码仍依赖你本机的官方环境。</span>
+            </li>
+            <li>
+              <strong>适配器可选且可回退</strong>
+              <span>只写受管 hook，原入口备份到 <code>.tapmakerwork/backups</code>。</span>
+            </li>
+            <li>
+              <strong>赞助自愿</strong>
+              <span>MIT 开源，不设付费墙；赞助不绑定任何功能或授权。</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="repos">
+        <div class="container split-2">
+          <div class="panel">
+            <h3>仓库与协作</h3>
+            <p>功能讨论、缺陷反馈、Pull Request 一律走 Gitee 主仓。GitHub 上的 PR 不会被合并。</p>
+            <div class="link-row">
+              <a
+                class="link-chip"
+                href="https://gitee.com/AndroidSUP/tap-maker-work"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Gitee 主仓</a
+              >
+              <a
+                class="link-chip"
+                href="https://github.com/AndroidSix/TapMakerWork"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub 镜像</a
+              >
+              <a
+                class="link-chip"
+                href="https://gitee.com/AndroidSUP/tap-maker-work/blob/master/CONTRIBUTING.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                >贡献指南</a
+              >
+              <a
+                class="link-chip"
+                href="https://gitee.com/AndroidSUP/tap-maker-work/blob/master/docs/ARCHITECTURE.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                >架构说明</a
+              >
+            </div>
+          </div>
+
+          <div class="panel" id="sponsor">
+            <h3>自愿赞助</h3>
+            <p>收入用于持续维护、打包与发行。不赞助也能使用全部开源能力。收款码以 Gitee 主仓 README 为准。</p>
+            <div class="sponsor-qr">
+              <figure>
+                <img src="./assets/wechat-pay.png" alt="微信自愿赞助收款码" width="180" height="180" loading="lazy" />
+                <figcaption>微信扫码</figcaption>
+              </figure>
+              <figure>
+                <img src="./assets/alipay.png" alt="支付宝自愿赞助收款码" width="180" height="180" loading="lazy" />
+                <figcaption>支付宝扫码</figcaption>
+              </figure>
+            </div>
+            <p class="sponsor-note">
+              请勿将赞助理解为购买许可证或激活码；项目不在 GitHub 通过私聊售卖软件。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>
+          TapMakerWork · TapTap Maker 第三方桌面 IDE<br />
+          非 TapTap 官方产品 · MIT License © 2026 KayingAI
+        </p>
+        <p>
+          <a href="https://gitee.com/AndroidSUP/tap-maker-work" target="_blank" rel="noopener noreferrer">主仓 Gitee</a>
+          ·
+          <a href="https://github.com/AndroidSix/TapMakerWork" target="_blank" rel="noopener noreferrer">镜像 GitHub</a>
+          ·
+          <a href="https://gitee.com/AndroidSUP/tap-makerwork-site" target="_blank" rel="noopener noreferrer">本站仓库</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var toggle = document.getElementById("nav-toggle");
+        var menu = document.getElementById("nav-menu");
+        if (!toggle || !menu) return;
+
+        toggle.addEventListener("click", function () {
+          var open = menu.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+
+        menu.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            menu.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
