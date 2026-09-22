@@ -1,3 +1,4 @@
+<!-- AI生成 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -22,6 +23,8 @@
     </script>
   </head>
   <body>
+<p data-aigc-mark="1" style="margin:0 0 8px;font-size:10px;line-height:1.3;color:#6b6560;font-weight:400;">AI生成</p>
+
     <header class="nav">
       <div class="container nav-inner">
         <a class="brand" href="#top" aria-label="TapMakerWork 首页">
@@ -34,22 +37,36 @@
           TapMakerWork
         </a>
 
-        <div class="nav-actions">
+        <div class="nav-right">
+          <ul class="nav-links" id="nav-menu">
+            <li><a href="#features">功能</a></li>
+            <li><a href="#roadmap">计划</a></li>
+            <li><a href="#arch">架构</a></li>
+            <li><a href="#download">下载</a></li>
+            <li><a href="#community">社区</a></li>
+            <li><a href="#repos">仓库</a></li>
+            <li class="nav-cta">
+              <a
+                class="btn btn-primary btn-sm"
+                href="https://github.com/AndroidSix/TapMakerWork/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+                >下载安装包</a
+              >
+            </li>
+          </ul>
+
           <button
             type="button"
             class="theme-toggle"
             id="theme-toggle"
-            aria-label="切换主题：自动 / 浅色 / 深色"
+            data-mode="system"
+            aria-label="主题：自动，点击切换"
             title="主题：自动 / 浅色 / 深色"
           >
-            <svg class="theme-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="3.2" stroke="currentColor" stroke-width="1.4" />
-              <path
-                d="M8 1.5v1.2M8 13.3v1.2M1.5 8h1.2M13.3 8h1.2M3.2 3.2l.85.85M11.95 11.95l.85.85M3.2 12.8l.85-.85M11.95 4.05l.85-.85"
-                stroke="currentColor"
-                stroke-width="1.3"
-                stroke-linecap="round"
-              />
+            <svg class="theme-icon" id="theme-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6" />
+              <path d="M8 20h8M12 17v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
             </svg>
             <span class="theme-label" id="theme-label">自动</span>
           </button>
@@ -67,24 +84,6 @@
             </svg>
           </button>
         </div>
-
-        <ul class="nav-links" id="nav-menu">
-          <li><a href="#features">功能</a></li>
-          <li><a href="#roadmap">计划</a></li>
-          <li><a href="#arch">架构</a></li>
-          <li><a href="#download">下载</a></li>
-          <li><a href="#community">社区</a></li>
-          <li><a href="#repos">仓库</a></li>
-          <li class="nav-cta">
-            <a
-              class="btn btn-primary btn-sm"
-              href="https://github.com/AndroidSix/TapMakerWork/releases"
-              target="_blank"
-              rel="noopener noreferrer"
-              >下载安装包</a
-            >
-          </li>
-        </ul>
       </div>
     </header>
 
@@ -550,8 +549,17 @@
         var root = document.documentElement;
         var toggle = document.getElementById("theme-toggle");
         var label = document.getElementById("theme-label");
+        var icon = document.getElementById("theme-icon");
         var order = ["system", "light", "dark"];
         var names = { system: "自动", light: "浅色", dark: "深色" };
+        var icons = {
+          system:
+            '<rect x="3" y="5" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M8 20h8M12 17v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+          light:
+            '<circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5 5l1.4 1.4M17.6 17.6L19 19M5 19l1.4-1.4M17.6 6.4L19 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+          dark:
+            '<path d="M20 14.5A7.5 7.5 0 0 1 9.5 4 7.8 7.8 0 1 0 20 14.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" fill="none"/>',
+        };
 
         function readMode() {
           try {
@@ -568,9 +576,11 @@
             root.removeAttribute("data-theme");
           }
           if (label) label.textContent = names[mode] || names.system;
+          if (icon) icon.innerHTML = icons[mode] || icons.system;
           if (toggle) {
-            toggle.setAttribute("aria-label", "主题：" + (names[mode] || names.system) + "，点击切换");
             toggle.setAttribute("data-mode", mode);
+            toggle.setAttribute("aria-label", "主题：" + (names[mode] || names.system) + "，点击切换");
+            toggle.setAttribute("title", "主题：" + (names[mode] || names.system) + " · 点击切换");
           }
           try {
             localStorage.setItem("tmw-theme", mode);
