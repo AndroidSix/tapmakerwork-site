@@ -53,5 +53,12 @@ git push origin main
 ## 视觉说明
 
 - Token 对齐主仓 `design-system/tapmakerwork`（主紫 `#7C3AED`、强调粉 `#EC4899`）
+- 主题：默认**跟随系统**，导航栏可手动切换「自动 / 浅色 / 深色」
 - Hero 右侧为 CSS 绘制的 Runtime 活编示意（无外链截图）
 - 字体使用系统栈优先，避免国内环境访问 Google Fonts 失败
+
+## 文案口径
+
+- 主仓 / Issue / PR：**GitHub** `AndroidSix/TapMakerWork`
+- Gitee：国内镜像下载
+- 含社区 QQ 群与后续开发计划（规划中）摘要

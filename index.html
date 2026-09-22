@@ -10,6 +10,16 @@
     <meta name="theme-color" content="#7C3AED" />
     <title>TapMakerWork · TapTap Maker 桌面 IDE</title>
     <link rel="stylesheet" href="./css/styles.css" />
+    <script>
+      (function () {
+        try {
+          var mode = localStorage.getItem("tmw-theme") || "system";
+          if (mode === "light" || mode === "dark") {
+            document.documentElement.setAttribute("data-theme", mode);
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <header class="nav">
@@ -24,29 +34,51 @@
           TapMakerWork
         </a>
 
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-label="打开菜单"
-          aria-expanded="false"
-          aria-controls="nav-menu"
-          id="nav-toggle"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M3 5h12M3 9h12M3 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-          </svg>
-        </button>
+        <div class="nav-actions">
+          <button
+            type="button"
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="切换主题：自动 / 浅色 / 深色"
+            title="主题：自动 / 浅色 / 深色"
+          >
+            <svg class="theme-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="3.2" stroke="currentColor" stroke-width="1.4" />
+              <path
+                d="M8 1.5v1.2M8 13.3v1.2M1.5 8h1.2M13.3 8h1.2M3.2 3.2l.85.85M11.95 11.95l.85.85M3.2 12.8l.85-.85M11.95 4.05l.85-.85"
+                stroke="currentColor"
+                stroke-width="1.3"
+                stroke-linecap="round"
+              />
+            </svg>
+            <span class="theme-label" id="theme-label">自动</span>
+          </button>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="打开菜单"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+            id="nav-toggle"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M3 5h12M3 9h12M3 13h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
 
         <ul class="nav-links" id="nav-menu">
           <li><a href="#features">功能</a></li>
+          <li><a href="#roadmap">计划</a></li>
           <li><a href="#arch">架构</a></li>
           <li><a href="#download">下载</a></li>
-          <li><a href="#boundary">边界</a></li>
+          <li><a href="#community">社区</a></li>
           <li><a href="#repos">仓库</a></li>
           <li class="nav-cta">
             <a
               class="btn btn-primary btn-sm"
-              href="https://gitee.com/AndroidSUP/tap-maker-work/releases"
+              href="https://github.com/AndroidSix/TapMakerWork/releases"
               target="_blank"
               rel="noopener noreferrer"
               >下载安装包</a
@@ -68,14 +100,14 @@
             <div class="hero-actions">
               <a
                 class="btn btn-primary"
-                href="https://gitee.com/AndroidSUP/tap-maker-work/releases"
+                href="https://github.com/AndroidSix/TapMakerWork/releases"
                 target="_blank"
                 rel="noopener noreferrer"
-                >前往 Gitee 下载</a
+                >前往 GitHub 下载</a
               >
               <a
                 class="btn btn-secondary"
-                href="https://gitee.com/AndroidSUP/tap-maker-work"
+                href="https://github.com/AndroidSix/TapMakerWork"
                 target="_blank"
                 rel="noopener noreferrer"
                 >查看源码主仓</a
@@ -197,7 +229,7 @@
               </div>
               <ul class="rack-list">
                 <li>Electron 宿主，macOS / Windows 安装包</li>
-                <li>发行更新走 Gitee 主仓，失败可手动下载回退</li>
+                <li>发行更新走 GitHub 主仓，支持手动下载回退</li>
                 <li>项目 MCP：文件、转换、快照、Runtime、预览与构建</li>
                 <li>离线内置 Monaco 编辑器，无 CDN 依赖</li>
                 <li>系统 Node.js 发现（PATH / 登录 shell / Homebrew / Volta）</li>
@@ -219,6 +251,68 @@
               </ul>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section class="section" id="roadmap">
+        <div class="container">
+          <header class="section-head">
+            <p class="section-kicker">ROADMAP</p>
+            <h2>后续开发计划（规划中）</h2>
+            <p>
+              下列能力<strong>尚未全部实现</strong>，进度以主仓
+              <a
+                href="https://github.com/AndroidSix/TapMakerWork/blob/main/docs/ROADMAP.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                >docs/ROADMAP.md</a
+              >
+              与发行说明为准。
+            </p>
+          </header>
+
+          <div class="road-grid">
+            <article class="road-card">
+              <h3>资源与构建优化</h3>
+              <p>减小包体、清理冗余、降低抄袭成本。</p>
+              <ul>
+                <li>图片无损压缩（批量、尽量保画质）</li>
+                <li>无用资源删除（引用审计后安全清理）</li>
+                <li>代码混淆 / 加固（兼容官方构建链）</li>
+              </ul>
+            </article>
+            <article class="road-card">
+              <h3>开发经验与 AI 提效</h3>
+              <p>把坑位、提示词与模板沉淀进 IDE。</p>
+              <ul>
+                <li>Maker 常见坑位与交付清单</li>
+                <li>AI 开发技巧与工作流</li>
+                <li>Skills / 工程模板（Claude / Cursor / Codex）</li>
+              </ul>
+            </article>
+            <article class="road-card">
+              <h3>多平台打包（规划）</h3>
+              <p>向导、预设与检查清单，不替代官方上架。</p>
+              <ul>
+                <li>H5 / Web 导出</li>
+                <li>Android APK 打包与签名引导</li>
+                <li>iOS 导出与上架检查</li>
+                <li>桌面游戏包、抖音 / 微信等小游戏向导</li>
+              </ul>
+            </article>
+            <article class="road-card">
+              <h3>游戏工程能力（规划）</h3>
+              <p>模板 + 文档 + 可选工具，合规以官方为准。</p>
+              <ul>
+                <li>UI 安全区域 / 异形屏检查</li>
+                <li>反作弊、强更新、存档回退</li>
+                <li>排行榜、广告接入标杆模板</li>
+              </ul>
+            </article>
+          </div>
+          <p class="road-note">
+            优先级可在交流群 1124103038 讨论。多平台能否导出取决于 TapTap Maker / 官方构建能力与各平台资质。
+          </p>
         </div>
       </section>
 
@@ -254,32 +348,36 @@
           <header class="section-head">
             <p class="section-kicker">DOWNLOAD</p>
             <h2>获取安装包</h2>
-            <p>协作与 PR 只认 Gitee 主仓；GitHub 仅作镜像下载。</p>
+            <p>协作与 PR 只认 GitHub 主仓；Gitee 仅作国内镜像下载。</p>
           </header>
 
           <div class="dl-grid">
             <div class="dl-main">
-              <h3>Gitee 发行版（主）</h3>
-              <p>macOS 下载 <code>TapMakerWork-*-mac-*.dmg</code>，Windows 下载 <code>*-windows-*.exe</code>。版本号以主仓 <code>package.json</code> 与 Releases 为准。</p>
+              <h3>GitHub Releases（主）</h3>
+              <p>
+                macOS 下载 <code>TapMakerWork-*-mac-*.dmg</code>，Windows 下载
+                <code>*-windows-*.exe</code>。版本号以主仓 <code>package.json</code> 与 Releases 为准。
+              </p>
               <div class="dl-actions">
                 <a
                   class="btn btn-primary"
-                  href="https://gitee.com/AndroidSUP/tap-maker-work/releases"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >打开 Gitee Releases</a
-                >
-                <a
-                  class="btn btn-secondary"
                   href="https://github.com/AndroidSix/TapMakerWork/releases"
                   target="_blank"
                   rel="noopener noreferrer"
-                  >GitHub 镜像</a
+                  >打开 GitHub Releases</a
+                >
+                <a
+                  class="btn btn-secondary"
+                  href="https://gitee.com/AndroidSUP/tap-maker-work/releases"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Gitee 镜像下载</a
                 >
               </div>
               <div class="dl-meta">
-                主仓 · gitee.com/AndroidSUP/tap-maker-work<br />
-                镜像 · github.com/AndroidSix/TapMakerWork
+                主仓 · github.com/AndroidSix/TapMakerWork<br />
+                镜像 · gitee.com/AndroidSUP/tap-maker-work<br />
+                发布：本地打包 → GitHub Releases；Gitee 镜像同步同一批安装包
               </div>
             </div>
 
@@ -296,7 +394,10 @@
                 <p>
                   Bridge 构建后配置
                   <code>node .../packages/bridge/dist/mcp.js</code>，供 Claude / Cursor / Codex 等读项目。
-                  <a href="https://gitee.com/AndroidSUP/tap-maker-work/blob/master/docs/MCP.md" target="_blank" rel="noopener noreferrer"
+                  <a
+                    href="https://github.com/AndroidSix/TapMakerWork/blob/main/docs/MCP.md"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     >详见 MCP 文档</a
                   >
                 </p>
@@ -306,6 +407,49 @@
                 <p>MIT © 2026 KayingAI。自由使用、修改、分发；保留版权与许可声明即可。</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="community">
+        <div class="container split-2">
+          <div class="panel">
+            <h3>社区交流</h3>
+            <p>TapMakerWork 工具交流群：优先级投票、坑位讨论、用法答疑。</p>
+            <p class="meta-line">群名称：TapMakerWork工具交流群<br />群号：1124103038</p>
+            <div class="link-row">
+              <a
+                class="link-chip"
+                href="https://qm.qq.com/q/OCt1HAmHK2"
+                target="_blank"
+                rel="noopener noreferrer"
+                >一键入群</a
+              >
+              <a
+                class="link-chip"
+                href="https://github.com/AndroidSix/TapMakerWork/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub Issues</a
+              >
+            </div>
+            <p class="sponsor-note">桌面版：标题栏「交流群」、命令栏「一键入群」、设置 →「社区交流」均可跳转。</p>
+          </div>
+
+          <div class="panel" id="sponsor">
+            <h3>自愿赞助</h3>
+            <p>收入用于持续维护、打包与发行。不赞助也能使用全部开源能力。收款码以 GitHub 主仓 README 为准。</p>
+            <div class="sponsor-qr">
+              <figure>
+                <img src="./assets/wechat-pay.png" alt="微信自愿赞助收款码" width="180" height="180" loading="lazy" />
+                <figcaption>微信扫码</figcaption>
+              </figure>
+              <figure>
+                <img src="./assets/alipay.png" alt="支付宝自愿赞助收款码" width="180" height="180" loading="lazy" />
+                <figcaption>支付宝扫码</figcaption>
+              </figure>
+            </div>
+            <p class="sponsor-note">请勿将赞助理解为购买许可证或激活码；项目不在 GitHub 通过私聊售卖软件。</p>
           </div>
         </div>
       </section>
@@ -339,58 +483,47 @@
       </section>
 
       <section class="section" id="repos">
-        <div class="container split-2">
+        <div class="container">
           <div class="panel">
             <h3>仓库与协作</h3>
-            <p>功能讨论、缺陷反馈、Pull Request 一律走 Gitee 主仓。GitHub 上的 PR 不会被合并。</p>
+            <p>功能讨论、缺陷反馈、Pull Request 一律走 <strong>GitHub 主仓</strong>。Gitee 镜像上的改动不会被合并。</p>
             <div class="link-row">
-              <a
-                class="link-chip"
-                href="https://gitee.com/AndroidSUP/tap-maker-work"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Gitee 主仓</a
-              >
               <a
                 class="link-chip"
                 href="https://github.com/AndroidSix/TapMakerWork"
                 target="_blank"
                 rel="noopener noreferrer"
-                >GitHub 镜像</a
+                >GitHub 主仓</a
               >
               <a
                 class="link-chip"
-                href="https://gitee.com/AndroidSUP/tap-maker-work/blob/master/CONTRIBUTING.md"
+                href="https://gitee.com/AndroidSUP/tap-maker-work"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Gitee 镜像</a
+              >
+              <a
+                class="link-chip"
+                href="https://github.com/AndroidSix/TapMakerWork/blob/main/CONTRIBUTING.md"
                 target="_blank"
                 rel="noopener noreferrer"
                 >贡献指南</a
               >
               <a
                 class="link-chip"
-                href="https://gitee.com/AndroidSUP/tap-maker-work/blob/master/docs/ARCHITECTURE.md"
+                href="https://github.com/AndroidSix/TapMakerWork/blob/main/docs/ARCHITECTURE.md"
                 target="_blank"
                 rel="noopener noreferrer"
                 >架构说明</a
               >
+              <a
+                class="link-chip"
+                href="https://github.com/AndroidSix/tapmakerwork-site"
+                target="_blank"
+                rel="noopener noreferrer"
+                >本站源码</a
+              >
             </div>
-          </div>
-
-          <div class="panel" id="sponsor">
-            <h3>自愿赞助</h3>
-            <p>收入用于持续维护、打包与发行。不赞助也能使用全部开源能力。收款码以 Gitee 主仓 README 为准。</p>
-            <div class="sponsor-qr">
-              <figure>
-                <img src="./assets/wechat-pay.png" alt="微信自愿赞助收款码" width="180" height="180" loading="lazy" />
-                <figcaption>微信扫码</figcaption>
-              </figure>
-              <figure>
-                <img src="./assets/alipay.png" alt="支付宝自愿赞助收款码" width="180" height="180" loading="lazy" />
-                <figcaption>支付宝扫码</figcaption>
-              </figure>
-            </div>
-            <p class="sponsor-note">
-              请勿将赞助理解为购买许可证或激活码；项目不在 GitHub 通过私聊售卖软件。
-            </p>
           </div>
         </div>
       </section>
@@ -403,32 +536,71 @@
           非 TapTap 官方产品 · MIT License © 2026 KayingAI
         </p>
         <p>
-          <a href="https://gitee.com/AndroidSUP/tap-maker-work" target="_blank" rel="noopener noreferrer">主仓 Gitee</a>
+          <a href="https://androidsix.github.io/tapmakerwork-site/" target="_blank" rel="noopener noreferrer">官网</a>
           ·
-          <a href="https://github.com/AndroidSix/TapMakerWork" target="_blank" rel="noopener noreferrer">镜像 GitHub</a>
+          <a href="https://github.com/AndroidSix/TapMakerWork" target="_blank" rel="noopener noreferrer">主仓 GitHub</a>
           ·
-          <a href="https://github.com/AndroidSix/tapmakerwork-site" target="_blank" rel="noopener noreferrer">本站源码</a>
+          <a href="https://gitee.com/AndroidSUP/tap-maker-work" target="_blank" rel="noopener noreferrer">镜像 Gitee</a>
         </p>
       </div>
     </footer>
 
     <script>
       (function () {
-        var toggle = document.getElementById("nav-toggle");
-        var menu = document.getElementById("nav-menu");
-        if (!toggle || !menu) return;
+        var root = document.documentElement;
+        var toggle = document.getElementById("theme-toggle");
+        var label = document.getElementById("theme-label");
+        var order = ["system", "light", "dark"];
+        var names = { system: "自动", light: "浅色", dark: "深色" };
 
-        toggle.addEventListener("click", function () {
-          var open = menu.classList.toggle("open");
-          toggle.setAttribute("aria-expanded", open ? "true" : "false");
-        });
+        function readMode() {
+          try {
+            return localStorage.getItem("tmw-theme") || "system";
+          } catch (e) {
+            return "system";
+          }
+        }
 
-        menu.querySelectorAll("a").forEach(function (link) {
-          link.addEventListener("click", function () {
-            menu.classList.remove("open");
-            toggle.setAttribute("aria-expanded", "false");
+        function applyMode(mode) {
+          if (mode === "light" || mode === "dark") {
+            root.setAttribute("data-theme", mode);
+          } else {
+            root.removeAttribute("data-theme");
+          }
+          if (label) label.textContent = names[mode] || names.system;
+          if (toggle) {
+            toggle.setAttribute("aria-label", "主题：" + (names[mode] || names.system) + "，点击切换");
+            toggle.setAttribute("data-mode", mode);
+          }
+          try {
+            localStorage.setItem("tmw-theme", mode);
+          } catch (e) {}
+        }
+
+        applyMode(readMode());
+
+        if (toggle) {
+          toggle.addEventListener("click", function () {
+            var current = readMode();
+            var next = order[(order.indexOf(current) + 1) % order.length];
+            applyMode(next);
           });
-        });
+        }
+
+        var navToggle = document.getElementById("nav-toggle");
+        var menu = document.getElementById("nav-menu");
+        if (navToggle && menu) {
+          navToggle.addEventListener("click", function () {
+            var open = menu.classList.toggle("open");
+            navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+          });
+          menu.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+              menu.classList.remove("open");
+              navToggle.setAttribute("aria-expanded", "false");
+            });
+          });
+        }
       })();
     </script>
   </body>
