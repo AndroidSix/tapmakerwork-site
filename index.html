@@ -50,7 +50,8 @@
 
         <div class="nav-right">
           <ul class="nav-links" id="nav-menu">
-            <li><a href="#features">功能</a></li>
+            <li><a href="#demo">演示</a></li>
+          <li><a href="#features">功能</a></li>
             <li><a href="#roadmap">计划</a></li>
             <li><a href="#arch">架构</a></li>
             <li><a href="#download">下载</a></li>
@@ -105,15 +106,15 @@
             <p class="eyebrow">TapTap Maker · 第三方桌面 IDE</p>
             <h1>在真 Runtime 画面上改 UI，而不是盲猜</h1>
             <p class="hero-lead">
-              TapMakerWork 把官方 Maker 能力组合成可视化工作台：画面内选控件、拖拽改样式、内嵌预览与真机镜像，并把环境 / 项目 / 构建就绪度串成一条交付线。
+              面向 <a href="https://www.taptap.cn" target="_blank" rel="noopener noreferrer">TapTap Maker</a> 的 macOS / Windows 桌面 IDE：真 Runtime 实时编辑、结构草图与预览镜像、图片压缩、交付工作台、素材审计，并开放项目级 MCP 给 AI 使用。
             </p>
             <div class="hero-actions">
               <a
                 class="btn btn-primary"
-                href="https://github.com/AndroidSix/TapMakerWork/releases"
-                target="_blank"
+                id="hero-download"
+                href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.0/TapMakerWork-0.1.0-mac-arm64.dmg"
                 rel="noopener noreferrer"
-                >前往 GitHub 下载</a
+                >下载安装包</a
               >
               <a
                 class="btn btn-secondary"
@@ -170,23 +171,43 @@
         </div>
       </section>
 
+      <section class="section demo" id="demo">
+        <div class="container">
+          <header class="section-head">
+            <p class="section-kicker">DEMO</p>
+            <h2>核心能力演示</h2>
+            <p>创建于 2026-09-22 · 展示实时编辑、Runtime 接入与 IDE 主流程。</p>
+          </header>
+          <div class="demo-player">
+            <video controls playsinline preload="metadata" width="1600" height="970" aria-label="TapMakerWork 核心能力演示视频">
+              <source src="./assets/demo/tapmakerwork-core-demo.mp4" type="video/mp4" />
+              你的浏览器不支持 video 标签，请 <a href="./assets/demo/tapmakerwork-core-demo.mp4" download>下载演示视频</a>。
+            </video>
+          </div>
+          <p class="demo-note">
+            若预览未加载，可 <a href="./assets/demo/tapmakerwork-core-demo.mp4">下载本地观看</a>
+            · 说明见主仓 <a href="https://github.com/AndroidSix/TapMakerWork/blob/main/README.md" target="_blank" rel="noopener noreferrer">README</a>。
+          </p>
+        </div>
+      </section>
+
       <section class="values">
         <div class="container">
           <div class="value-rail">
             <article class="value-item">
-              <div class="num">01 / SEE</div>
-              <h3>真画面，不是替身</h3>
-              <p>采样官方 Runtime 最终帧，叠加控件命中框，点画面选控件。</p>
+              <div class="num">01 / 实时编辑</div>
+              <h3>真 Runtime，所见即所得</h3>
+              <p>采样真 Runtime 画面，画面内选控件、拖拽、改样式。</p>
             </article>
             <article class="value-item">
-              <div class="num">02 / EDIT</div>
-              <h3>拖一下就改到</h3>
-              <p>画面内拖移、八向缩放、键盘微调；属性改动防抖同步到旁路 UI 草稿。</p>
+              <div class="num">02 / 结构 + 预览</div>
+              <h3>结构草图 · 预览镜像</h3>
+              <p>结构草图、内嵌预览与真机窗口镜像，减少「改完再盲猜」。</p>
             </article>
             <article class="value-item">
-              <div class="num">03 / SHIP</div>
-              <h3>交付链路可见</h3>
-              <p>环境、项目、Runtime、预览日志、构建就绪度集中管理，不自动乱发布。</p>
+              <div class="num">03 / 交付与 AI</div>
+              <h3>交付一条线 · MCP 接入</h3>
+              <p>环境 / 项目 / 内容 / Runtime / 验证 / 构建就绪度；项目级 MCP 供 AI 读控件。</p>
             </article>
           </div>
         </div>
@@ -196,8 +217,8 @@
         <div class="container">
           <header class="section-head">
             <p class="section-kicker">CAPABILITIES</p>
-            <h2>功能按工作台分区，不堆 Demo 按钮</h2>
-            <p>围绕「看得见 → 改得动 → 交得出去」组织，Lua 继续负责行为，视觉结构可旁路沉淀。</p>
+            <h2>核心能力（对齐主仓说明）</h2>
+            <p>围绕「实时编辑 → 结构预览 → 图片压缩与审计 → 交付与 AI」组织。</p>
           </header>
 
           <div class="rack">
@@ -376,7 +397,7 @@
                 <a
                   class="btn btn-primary"
                   id="dl-primary"
-                  href="https://github.com/AndroidSix/TapMakerWork/releases/latest"
+                  href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.0/TapMakerWork-0.1.0-mac-arm64.dmg"
                   target="_blank"
                   rel="noopener noreferrer"
                   >下载安装包</a
@@ -403,11 +424,11 @@
                     <h4>macOS · Apple 芯片</h4>
                     <span class="dl-plat-tag">arm64</span>
                   </div>
-                  <p class="dl-file"><code>TapMakerWork-*-mac-arm64.dmg</code></p>
+                  <p class="dl-file"><code>TapMakerWork-0.1.0-mac-arm64.dmg</code></p>
                   <p>适用于 M1 / M2 / M3 / M4 等 Apple Silicon Mac。</p>
                   <a
                     class="btn btn-secondary btn-sm"
-                    href="https://github.com/AndroidSix/TapMakerWork/releases/latest"
+                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.0/TapMakerWork-0.1.0-mac-arm64.dmg
                     target="_blank"
                     rel="noopener noreferrer"
                     data-dl="mac-arm64"
@@ -420,11 +441,11 @@
                     <h4>macOS · Intel</h4>
                     <span class="dl-plat-tag">x64</span>
                   </div>
-                  <p class="dl-file"><code>TapMakerWork-*-mac-x64.dmg</code></p>
+                  <p class="dl-file"><code>TapMakerWork-0.1.0-mac-x64.dmg</code></p>
                   <p>适用于 Intel 处理器 Mac；Rosetta 用户也可优先选 arm64。</p>
                   <a
                     class="btn btn-secondary btn-sm"
-                    href="https://github.com/AndroidSix/TapMakerWork/releases/latest"
+                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.0/TapMakerWork-0.1.0-mac-x64.dmg
                     target="_blank"
                     rel="noopener noreferrer"
                     data-dl="mac-x64"
@@ -437,11 +458,11 @@
                     <h4>Windows</h4>
                     <span class="dl-plat-tag">x64</span>
                   </div>
-                  <p class="dl-file"><code>TapMakerWork-*-windows-x64.exe</code></p>
+                  <p class="dl-file"><code>TapMakerWork-0.1.0-windows-x64.exe</code></p>
                   <p>64 位安装向导（NSIS）。32 位系统暂不支持。</p>
                   <a
                     class="btn btn-secondary btn-sm"
-                    href="https://github.com/AndroidSix/TapMakerWork/releases/latest"
+                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.0/TapMakerWork-0.1.0-windows-x64.exe
                     target="_blank"
                     rel="noopener noreferrer"
                     data-dl="windows-x64"
@@ -451,10 +472,10 @@
               </div>
 
               <div class="dl-meta">
-                主仓 · github.com/AndroidSix/TapMakerWork<br />
-                镜像 · gitee.com/AndroidSUP/tap-maker-work<br />
-                版本以主仓 <code>package.json</code> 与 GitHub Releases 为准；文件名形如
-                <code>TapMakerWork-0.1.0-…</code>
+                当前版本 <strong>v0.1.0</strong> ·
+                <a href="https://github.com/AndroidSix/TapMakerWork/releases/tag/v0.1.0" target="_blank" rel="noopener noreferrer">Release 页</a>
+                · 镜像 Gitee<br />
+                主仓 · github.com/AndroidSix/TapMakerWork · 镜像 · gitee.com/AndroidSUP/tap-maker-work
               </div>
             </div>
 
@@ -726,26 +747,29 @@
           "mac-arm64": {
             os: "macOS",
             chip: "Apple 芯片",
-            file: "TapMakerWork-*-mac-arm64.dmg",
+            file: "TapMakerWork-0.1.0-mac-arm64.dmg",
+            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.0/TapMakerWork-0.1.0-mac-arm64.dmg",
             btn: "下载 macOS (Apple) .dmg",
             desc: "为你推荐 Apple Silicon 的 DMG 安装包。",
           },
           "mac-x64": {
             os: "macOS",
             chip: "Intel",
-            file: "TapMakerWork-*-mac-x64.dmg",
+            file: "TapMakerWork-0.1.0-mac-x64.dmg",
+            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.0/TapMakerWork-0.1.0-mac-x64.dmg",
             btn: "下载 macOS (Intel) .dmg",
             desc: "为你推荐 Intel Mac 的 DMG 安装包。",
           },
           "windows-x64": {
             os: "Windows",
             chip: "x64",
-            file: "TapMakerWork-*-windows-x64.exe",
+            file: "TapMakerWork-0.1.0-windows-x64.exe",
+            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.0/TapMakerWork-0.1.0-windows-x64.exe",
             btn: "下载 Windows 安装程序",
             desc: "为你推荐 64 位 Windows 安装向导。",
           },
         };
-        var RELEASES = "https://github.com/AndroidSix/TapMakerWork/releases/latest";
+        var RELEASES = "https://github.com/AndroidSix/TapMakerWork/releases/tag/v0.1.0";
 
         function markRecommended(key) {
           document.querySelectorAll(".dl-plat").forEach(function (el) {
@@ -759,7 +783,14 @@
           if (!meta) return;
           if (title) title.textContent = "推荐 · " + meta.os + " " + meta.chip;
           if (desc) desc.textContent = meta.desc + " 文件：" + meta.file;
-          if (primary) primary.textContent = meta.btn;
+          if (primary) {
+            primary.textContent = meta.btn;
+            if (meta.url) primary.setAttribute("href", meta.url);
+          }
+          var hero = document.getElementById("hero-download");
+          if (hero && meta.url) hero.setAttribute("href", meta.url);
+          var navDl = document.getElementById("nav-download");
+          if (navDl && meta.url) navDl.setAttribute("href", meta.url);
           if (detected) {
             detected.textContent = "当前设备：" + meta.os + " · " + meta.chip;
             detected.setAttribute("data-state", "ok");

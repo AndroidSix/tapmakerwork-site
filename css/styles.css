@@ -898,6 +898,35 @@ code {
   background: var(--color-secondary);
 }
 
+/* ——— Demo video ——— */
+.demo-player {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-deep);
+  box-shadow: var(--shadow-lg);
+}
+
+.demo-player video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
+}
+
+.demo-note {
+  margin: var(--space-lg) 0 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-muted-foreground);
+}
+
+.demo-note a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* ——— Roadmap ——— */
 .road-grid {
   display: grid;
