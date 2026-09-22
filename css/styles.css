@@ -1081,6 +1081,107 @@ code {
   border-top: 1px solid var(--color-border);
 }
 
+.dl-detected {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-code-bg);
+  color: var(--color-primary);
+}
+
+.dl-detected::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-live);
+  flex-shrink: 0;
+}
+
+.dl-detected[data-state="warn"]::before {
+  background: var(--color-accent-solid);
+}
+
+.dl-platforms {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: var(--space-xl);
+}
+
+.dl-plat {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-background);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.dl-plat.is-recommended {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.dl-plat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dl-plat h4 {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.dl-plat-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--color-muted);
+  color: var(--color-muted-foreground);
+}
+
+.dl-plat p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-muted-foreground);
+  flex: 1;
+}
+
+.dl-plat .dl-file {
+  word-break: break-all;
+}
+
+.dl-plat .btn {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.dl-plat.is-recommended .btn {
+  background: var(--color-accent-solid);
+  color: var(--color-accent-ink);
+  border-color: transparent;
+}
+
+.dl-quote {
+  border-left: 3px solid var(--color-accent-solid);
+  padding-left: 12px;
+  color: var(--color-foreground) !important;
+  font-size: 13px !important;
+}
+
 .dl-side {
   display: grid;
   gap: 12px;
@@ -1322,6 +1423,10 @@ code {
   }
 
   .boundary-list {
+    grid-template-columns: 1fr;
+  }
+
+  .dl-platforms {
     grid-template-columns: 1fr;
   }
 

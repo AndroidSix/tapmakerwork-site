@@ -10,6 +10,14 @@
     />
     <meta name="theme-color" content="#7C3AED" />
     <title>TapMakerWork · TapTap Maker 桌面 IDE</title>
+    <link rel="icon" href="./favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="./assets/icon-512.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <meta name="msapplication-TileImage" content="./assets/icon-192.png" />
     <link rel="stylesheet" href="./css/styles.css" />
     <script>
       (function () {
@@ -347,63 +355,161 @@
           <header class="section-head">
             <p class="section-kicker">DOWNLOAD</p>
             <h2>获取安装包</h2>
-            <p>协作与 PR 只认 GitHub 主仓；Gitee 仅作国内镜像下载。</p>
+            <p>
+              按你的系统选择对应安装包。协作与 PR 只认
+              <strong>GitHub 主仓</strong>；Gitee 仅作国内镜像下载。
+            </p>
           </header>
 
           <div class="dl-grid">
             <div class="dl-main">
-              <h3>GitHub Releases（主）</h3>
-              <p>
-                macOS 下载 <code>TapMakerWork-*-mac-*.dmg</code>，Windows 下载
-                <code>*-windows-*.exe</code>。版本号以主仓 <code>package.json</code> 与 Releases 为准。
+              <p class="dl-detected" id="dl-detected" aria-live="polite">正在识别当前设备…</p>
+              <h3 id="dl-title">推荐安装包</h3>
+              <p id="dl-desc">
+                根据系统与芯片自动推荐。若识别不准，请在下方按平台手动选择。
               </p>
+
               <div class="dl-actions">
                 <a
                   class="btn btn-primary"
+                  id="dl-primary"
+                  href="https://github.com/AndroidSix/TapMakerWork/releases/latest"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >下载安装包</a
+                >
+                <a
+                  class="btn btn-secondary"
                   href="https://github.com/AndroidSix/TapMakerWork/releases"
                   target="_blank"
                   rel="noopener noreferrer"
-                  >打开 GitHub Releases</a
+                  >全部版本 / Assets</a
                 >
                 <a
                   class="btn btn-secondary"
                   href="https://gitee.com/AndroidSUP/tap-maker-work/releases"
                   target="_blank"
                   rel="noopener noreferrer"
-                  >Gitee 镜像下载</a
+                  >Gitee 镜像</a
                 >
               </div>
+
+              <div class="dl-platforms" role="list">
+                <article class="dl-plat" data-plat="mac-arm64" role="listitem">
+                  <div class="dl-plat-top">
+                    <h4>macOS · Apple 芯片</h4>
+                    <span class="dl-plat-tag">arm64</span>
+                  </div>
+                  <p class="dl-file"><code>TapMakerWork-*-mac-arm64.dmg</code></p>
+                  <p>适用于 M1 / M2 / M3 / M4 等 Apple Silicon Mac。</p>
+                  <a
+                    class="btn btn-secondary btn-sm"
+                    href="https://github.com/AndroidSix/TapMakerWork/releases/latest"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-dl="mac-arm64"
+                    >下载 .dmg</a
+                  >
+                </article>
+
+                <article class="dl-plat" data-plat="mac-x64" role="listitem">
+                  <div class="dl-plat-top">
+                    <h4>macOS · Intel</h4>
+                    <span class="dl-plat-tag">x64</span>
+                  </div>
+                  <p class="dl-file"><code>TapMakerWork-*-mac-x64.dmg</code></p>
+                  <p>适用于 Intel 处理器 Mac；Rosetta 用户也可优先选 arm64。</p>
+                  <a
+                    class="btn btn-secondary btn-sm"
+                    href="https://github.com/AndroidSix/TapMakerWork/releases/latest"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-dl="mac-x64"
+                    >下载 .dmg</a
+                  >
+                </article>
+
+                <article class="dl-plat" data-plat="windows-x64" role="listitem">
+                  <div class="dl-plat-top">
+                    <h4>Windows</h4>
+                    <span class="dl-plat-tag">x64</span>
+                  </div>
+                  <p class="dl-file"><code>TapMakerWork-*-windows-x64.exe</code></p>
+                  <p>64 位安装向导（NSIS）。32 位系统暂不支持。</p>
+                  <a
+                    class="btn btn-secondary btn-sm"
+                    href="https://github.com/AndroidSix/TapMakerWork/releases/latest"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-dl="windows-x64"
+                    >下载 .exe</a
+                  >
+                </article>
+              </div>
+
               <div class="dl-meta">
                 主仓 · github.com/AndroidSix/TapMakerWork<br />
                 镜像 · gitee.com/AndroidSUP/tap-maker-work<br />
-                发布：本地打包 → GitHub Releases；Gitee 镜像同步同一批安装包
+                版本以主仓 <code>package.json</code> 与 GitHub Releases 为准；文件名形如
+                <code>TapMakerWork-0.1.0-…</code>
               </div>
             </div>
 
             <div class="dl-side">
+              <div class="dl-card">
+                <h4>给分发者：能不能给普通用户？</h4>
+                <p>
+                  <strong>已正式签名</strong>（Mac：Developer ID + 公证；Win：Authenticode）→
+                  <strong>可以</strong>对外提供，安装体验接近正常软件。
+                </p>
+                <p>
+                  <strong>本机一键打包、未配证书</strong> →
+                  <strong>不要对外发</strong>，仅限自己 / 团队内部 QA。开发态
+                  <code>npm run dev</code> 也不要当安装包发。
+                </p>
+                <p>
+                  自有代码 + 正规依赖打包<strong>不涉及侵权</strong>。「没签名」只表示系统还不信任发布者身份，不是违法。请使用自己的证书，勿用他人证书或伪造签名。
+                </p>
+              </div>
+
+              <div class="dl-card">
+                <h4>未签名包时用户会看到</h4>
+                <p>
+                  <strong>macOS</strong>：「无法验证开发者」「已损坏」——需右键打开或清隔离属性；屏幕录制 / 辅助功能授权可能不稳，自动更新不可靠。
+                </p>
+                <p>
+                  <strong>Windows</strong>：SmartScreen「已保护你的电脑」——需「更多信息 → 仍要运行」；部分杀软可能误报。
+                </p>
+                <p>
+                  请下载带版本号的<strong>正式 Release</strong>安装包。若系统拦截，说明当前文件不是已签名正式版，请改从 GitHub
+                  Releases 重新下载，不要使用同事私自打包的 QA 文件。
+                </p>
+              </div>
+
+              <div class="dl-card">
+                <h4>下载页 / 群公告可直接粘贴</h4>
+                <p class="dl-quote">
+                  请下载带版本号的正式 Release 安装包。若系统提示无法验证开发者或 SmartScreen
+                  拦截，说明当前文件不是已签名正式版，请改从官方 Release 重新下载，不要用同事私自打包的 QA
+                  文件。
+                </p>
+                <p>
+                  完整自检与签名配置见
+                  <a
+                    href="https://github.com/AndroidSix/TapMakerWork/blob/main/docs/DESKTOP_RELEASE.md"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >docs/DESKTOP_RELEASE.md</a
+                  >。
+                </p>
+              </div>
+
               <div class="dl-card">
                 <h4>从源码启动</h4>
                 <p>
                   <code>npm install</code> 后执行 <code>npm run dev:web</code>，浏览器打开
                   <code>http://127.0.0.1:4173</code>；桌面宿主用 <code>npm run dev</code>。
                 </p>
-              </div>
-              <div class="dl-card">
-                <h4>Project MCP</h4>
-                <p>
-                  Bridge 构建后配置
-                  <code>node .../packages/bridge/dist/mcp.js</code>，供 Claude / Cursor / Codex 等读项目。
-                  <a
-                    href="https://github.com/AndroidSix/TapMakerWork/blob/main/docs/MCP.md"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >详见 MCP 文档</a
-                  >
-                </p>
-              </div>
-              <div class="dl-card">
-                <h4>许可证</h4>
-                <p>MIT © 2026 KayingAI。自由使用、修改、分发；保留版权与许可声明即可。</p>
               </div>
             </div>
           </div>
@@ -611,6 +717,127 @@
             });
           });
         }
+
+        /* —— 安装包设备识别 —— */
+        var PLAT_META = {
+          "mac-arm64": {
+            os: "macOS",
+            chip: "Apple 芯片",
+            file: "TapMakerWork-*-mac-arm64.dmg",
+            btn: "下载 macOS (Apple) .dmg",
+            desc: "为你推荐 Apple Silicon 的 DMG 安装包。",
+          },
+          "mac-x64": {
+            os: "macOS",
+            chip: "Intel",
+            file: "TapMakerWork-*-mac-x64.dmg",
+            btn: "下载 macOS (Intel) .dmg",
+            desc: "为你推荐 Intel Mac 的 DMG 安装包。",
+          },
+          "windows-x64": {
+            os: "Windows",
+            chip: "x64",
+            file: "TapMakerWork-*-windows-x64.exe",
+            btn: "下载 Windows 安装程序",
+            desc: "为你推荐 64 位 Windows 安装向导。",
+          },
+        };
+        var RELEASES = "https://github.com/AndroidSix/TapMakerWork/releases/latest";
+
+        function markRecommended(key) {
+          document.querySelectorAll(".dl-plat").forEach(function (el) {
+            el.classList.toggle("is-recommended", el.getAttribute("data-plat") === key);
+          });
+          var meta = PLAT_META[key];
+          var title = document.getElementById("dl-title");
+          var desc = document.getElementById("dl-desc");
+          var primary = document.getElementById("dl-primary");
+          var detected = document.getElementById("dl-detected");
+          if (!meta) return;
+          if (title) title.textContent = "推荐 · " + meta.os + " " + meta.chip;
+          if (desc) desc.textContent = meta.desc + " 文件：" + meta.file;
+          if (primary) primary.textContent = meta.btn;
+          if (detected) {
+            detected.textContent = "当前设备：" + meta.os + " · " + meta.chip;
+            detected.setAttribute("data-state", "ok");
+          }
+        }
+
+        function resolveMacArch() {
+          return new Promise(function (resolve) {
+            try {
+              var uad = navigator.userAgentData;
+              if (uad && typeof uad.getHighEntropyValues === "function") {
+                uad.getHighEntropyValues(["architecture"]).then(function (values) {
+                  if (values && values.architecture === "arm") return resolve("arm");
+                  if (values && values.architecture === "x86") return resolve("x64");
+                  resolve(macWebGlArch());
+                }, function () {
+                  resolve(macWebGlArch());
+                });
+                return;
+              }
+            } catch (e) {}
+            resolve(macWebGlArch());
+          });
+        }
+
+        function macWebGlArch() {
+          try {
+            var canvas = document.createElement("canvas");
+            var gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+            if (!gl) return "arm";
+            var ext = gl.getExtension("WEBGL_debug_renderer_info");
+            var renderer = ext ? String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) || "") : "";
+            if (/Apple M|Apple GPU|Apple\s/i.test(renderer)) return "arm";
+            if (/Intel|AMD|NVIDIA|GeForce|Radeon/i.test(renderer)) return "x64";
+          } catch (e) {}
+          return "arm";
+        }
+
+        function detectAndApply() {
+          var ua = navigator.userAgent || "";
+          var platform = String(navigator.platform || "");
+          var detected = document.getElementById("dl-detected");
+
+          if (/Windows/i.test(ua) || /Win/i.test(platform)) {
+            markRecommended("windows-x64");
+            return;
+          }
+          if (/iPhone|iPad|iPod/i.test(ua)) {
+            if (detected) {
+              detected.textContent = "当前为 iOS 浏览器，桌面安装包请用 Mac / Windows 下载";
+              detected.setAttribute("data-state", "warn");
+            }
+            return;
+          }
+          if (/Android/i.test(ua)) {
+            if (detected) {
+              detected.textContent = "当前为 Android，请用 Mac / Windows 下载桌面版";
+              detected.setAttribute("data-state", "warn");
+            }
+            return;
+          }
+          if (/Macintosh|Mac OS X|Mac/i.test(ua) || /Mac/i.test(platform)) {
+            resolveMacArch().then(function (arch) {
+              markRecommended(arch === "x64" ? "mac-x64" : "mac-arm64");
+            });
+            return;
+          }
+          if (/Linux/i.test(ua) || /Linux/i.test(platform)) {
+            if (detected) {
+              detected.textContent = "当前为 Linux，暂无官方包，请用 Mac / Windows";
+              detected.setAttribute("data-state", "warn");
+            }
+            return;
+          }
+          if (detected) {
+            detected.textContent = "未能识别系统，请在下方手动选择安装包";
+            detected.setAttribute("data-state", "warn");
+          }
+        }
+
+        detectAndApply();
       })();
     </script>
   </body>
