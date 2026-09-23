@@ -529,10 +529,44 @@
               </div>
 
               <div class="dl-card">
+                <h4>macOS 安装受限时怎么办？</h4>
+                <p>
+                  macOS 对<strong>未配置正式 Developer ID 证书</strong>的安装包会提示「无法验证开发者」「已损坏」等限制。
+                  若右键「打开」或系统设置 → 隐私与安全性里<strong>没有「仍要打开」</strong>，请改用<strong>源码本地打包</strong>（产物在你自己机器上构建，便于通过本机允许策略）。
+                </p>
+                <p>
+                  步骤（详见主仓
+                  <a href="https://github.com/AndroidSix/TapMakerWork/blob/main/README.md" target="_blank" rel="noopener noreferrer">README</a>
+                  与
+                  <a href="https://github.com/AndroidSix/TapMakerWork/blob/main/docs/DESKTOP_RELEASE.md" target="_blank" rel="noopener noreferrer">DESKTOP_RELEASE.md</a>）：
+                </p>
+                <p class="dl-quote">
+                  1. 安装 Node.js（建议 LTS）<br />
+                  2. <code>git clone https://github.com/AndroidSix/TapMakerWork.git</code><br />
+                  3. <code>cd TapMakerWork &amp;&amp; npm install</code><br />
+                  4. 仅想先跑起来：可双击 <code>outputs/launchers/TapMakerWork-macOS.command</code>，或 <code>npm install</code> 后 <code>npm run dev:web</code>（浏览器 127.0.0.1:4173）/ <code>npm run dev</code>（桌面宿主）<br />
+                  5. 自己打安装包：macOS 执行 <code>npm run dist:mac</code>（或 <code>npm run package:ide:mac</code>）<br />
+                  6. 产物目录 <code>outputs/installers</code>，打开 <code>TapMakerWork-*-mac-*.dmg</code> 安装
+                </p>
+                <p>
+                  若仍被隔离属性拦住，可在终端对 App 执行
+                  <code>xattr -dr com.apple.quarantine /Applications/TapMakerWork.app</code>
+                  后再启动。自打未签名包仅建议<strong>本机/团队自用</strong>；对外分发请用已签名（含公证）的正式 Release。
+                </p>
+                <p>
+                  Windows：SmartScreen 提示时选「更多信息 → 仍要运行」；无证书时同样建议源码 <code>npm run dist:win</code> / <code>npm run package:ide:win</code>。
+                </p>
+              </div>
+
+              <div class="dl-card">
                 <h4>从源码启动</h4>
                 <p>
-                  <code>npm install</code> 后执行 <code>npm run dev:web</code>，浏览器打开
-                  <code>http://127.0.0.1:4173</code>；桌面宿主用 <code>npm run dev</code>。
+                  一键启动器：macOS 双击 <code>outputs/launchers/TapMakerWork-macOS.command</code>，Windows 双击
+                  <code>outputs/launchers/TapMakerWork-Windows.cmd</code>（首次会装依赖，可记住上次 Maker 项目）。
+                </p>
+                <p>
+                  命令行：<code>npm install</code> 后 <code>npm run dev:web</code> →
+                  <code>http://127.0.0.1:4173</code>；桌面宿主 <code>npm run dev</code>。打包见上一张卡片。
                 </p>
               </div>
             </div>
