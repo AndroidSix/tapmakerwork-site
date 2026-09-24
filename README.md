@@ -28,7 +28,8 @@ TapMakerWork（TapTap Maker 第三方桌面 IDE）产品官网静态站。
 ```text
 index.html                      # 单页官网
 css/styles.css                  # 样式（对齐 design-system 紫/粉）
-assets/                         # 赞助收款码等
+assets/                         # 图标、赞助收款码、演示视频
+assets/demo/                    # 核心演示 + 内置工具录屏
 .github/workflows/pages.yml     # GitHub Pages 自动部署
 ```
 
@@ -61,4 +62,5 @@ git push origin main
 
 - 主仓 / Issue / PR：**GitHub** `AndroidSix/TapMakerWork`
 - Gitee：国内镜像下载
-- 含社区 QQ 群与后续开发计划（规划中）摘要
+- 当前安装包版本：**v0.1.2**（macOS `.pkg` / Windows `.exe`；下载按钮按本机系统直链）
+- 含社区 QQ 群、内置工具介绍（图片压缩 / 新游雷达）与后续开发计划摘要

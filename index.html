@@ -51,20 +51,21 @@
         <div class="nav-right">
           <ul class="nav-links" id="nav-menu">
             <li><a href="#demo">演示</a></li>
-          <li><a href="#features">功能</a></li>
+            <li><a href="#features">功能</a></li>
+            <li><a href="#tools">工具</a></li>
             <li><a href="#roadmap">计划</a></li>
             <li><a href="#arch">架构</a></li>
             <li><a href="#download">下载</a></li>
             <li><a href="#community">社区</a></li>
             <li><a href="#credits">鸣谢</a></li>
-          <li><a href="#repos">仓库</a></li>
+            <li><a href="#repos">仓库</a></li>
             <li class="nav-cta">
               <a
                 class="btn btn-primary btn-sm"
-                href="https://github.com/AndroidSix/TapMakerWork/releases"
-                target="_blank"
+                id="nav-download"
+                href="https://github.com/AndroidSix/TapMakerWork/releases/download/0.1.2/TapMakerWork-0.1.2-mac-arm64.pkg"
                 rel="noopener noreferrer"
-                >下载安装包</a
+                >下载本机安装包</a
               >
             </li>
           </ul>
@@ -107,15 +108,15 @@
             <p class="eyebrow">TapTap Maker · 第三方桌面 IDE</p>
             <h1>在真 Runtime 画面上改 UI，而不是盲猜</h1>
             <p class="hero-lead">
-              面向 <a href="https://www.taptap.cn" target="_blank" rel="noopener noreferrer">TapTap Maker</a> 的 macOS / Windows 桌面 IDE：真 Runtime 实时编辑、结构草图与预览镜像、图片压缩、交付工作台、素材审计，并开放项目级 MCP 给 AI 使用。
+              面向 <a href="https://www.taptap.cn" target="_blank" rel="noopener noreferrer">TapTap Maker</a> 的 macOS / Windows 桌面 IDE：真 Runtime 实时编辑、结构草图与预览镜像、图片压缩、新游雷达、交付工作台、素材审计，并开放项目级 MCP 给 AI 使用。
             </p>
             <div class="hero-actions">
               <a
                 class="btn btn-primary"
                 id="hero-download"
-                href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.1/TapMakerWork-0.1.1-mac-arm64.dmg"
+                href="https://github.com/AndroidSix/TapMakerWork/releases/download/0.1.2/TapMakerWork-0.1.2-mac-arm64.pkg"
                 rel="noopener noreferrer"
-                >下载安装包</a
+                >下载本机安装包</a
               >
               <a
                 class="btn btn-secondary"
@@ -265,6 +266,7 @@
                 <li>项目 MCP：文件、转换、快照、Runtime、预览与构建</li>
                 <li>离线内置 Monaco 编辑器，无 CDN 依赖</li>
                 <li>系统 Node.js 发现（PATH / 登录 shell / Homebrew / Volta）</li>
+                <li>工具集：图片压缩、新游雷达看板（见 <a href="#tools">内置工具</a>）</li>
               </ul>
             </article>
 
@@ -283,6 +285,73 @@
               </ul>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section class="section tools" id="tools">
+        <div class="container">
+          <header class="section-head">
+            <p class="section-kicker">BUILT-IN TOOLS</p>
+            <h2>内置工具：图片压缩 · 新游雷达</h2>
+            <p>
+              标题栏「工具」即可打开。下面演示以<strong>新游雷达看板</strong>为主，并说明<strong>图片压缩</strong>的用法；创建于 2026-09-24 ·
+              对应 v0.1.2。
+            </p>
+          </header>
+
+          <div class="tool-grid">
+            <article class="tool-card">
+              <p class="tool-kicker">01 · IMAGE COMPRESS</p>
+              <h3>图片压缩工具</h3>
+              <p>
+                批量压缩项目图片，默认走本地引擎（pngquant / jpegoptim / 内置 Jimp），也可选 TinyPNG 优先。结果面板直接看扫描数、压缩数与节省体积，并可一键复制「分批提交」提示给 AI。
+              </p>
+              <ul>
+                <li>命令栏 / 标题栏「工具」→ 图片压缩</li>
+                <li>缩小包体，交付前顺手过一遍</li>
+                <li>TinyPNG API Key 仅存本机，不进项目 git</li>
+              </ul>
+            </article>
+
+            <article class="tool-card">
+              <p class="tool-kicker">02 · NEW GAME RADAR</p>
+              <h3>新游雷达看板</h3>
+              <p>
+                对照 TapTap 制造 / 商店热门 / Steam：每日上线汇总、榜单明细、赛道象限与机会洞察，并支持离线快照与评分分布可视化，方便选题与竞品观察。
+              </p>
+              <ul>
+                <li>每日上线 · 榜单明细 · 雷达洞察</li>
+                <li>分析台 · 可视化（评分分布等）</li>
+                <li>可按日期范围筛选，获取最新排行</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="demo-player tools-player">
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              width="1600"
+              height="900"
+              aria-label="图片压缩与新游雷达工具演示"
+            >
+              <source src="./assets/demo/builtin-tools-compress-radar.mp4" type="video/mp4" />
+              你的浏览器不支持 video 标签，请
+              <a href="./assets/demo/builtin-tools-compress-radar.mp4" download>下载演示视频</a>。
+            </video>
+          </div>
+          <p class="demo-note">
+            录屏演示新游雷达看板（每日上线 / 洞察 / 可视化）；图片压缩同在「工具」菜单。可
+            <a href="./assets/demo/builtin-tools-compress-radar.mp4">下载本地观看</a>
+            · 发行说明见
+            <a
+              href="https://github.com/AndroidSix/TapMakerWork/releases/tag/0.1.2"
+              target="_blank"
+              rel="noopener noreferrer"
+              >0.1.2 Release</a
+            >。
+          </p>
         </div>
       </section>
 
@@ -397,10 +466,9 @@
                 <a
                   class="btn btn-primary"
                   id="dl-primary"
-                  href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.1/TapMakerWork-0.1.1-mac-arm64.dmg"
-                  target="_blank"
+                  href="https://github.com/AndroidSix/TapMakerWork/releases/download/0.1.2/TapMakerWork-0.1.2-mac-arm64.pkg"
                   rel="noopener noreferrer"
-                  >下载安装包</a
+                  >下载本机安装包</a
                 >
                 <a
                   class="btn btn-secondary"
@@ -424,15 +492,14 @@
                     <h4>macOS · Apple 芯片</h4>
                     <span class="dl-plat-tag">arm64</span>
                   </div>
-                  <p class="dl-file"><code>TapMakerWork-0.1.1-mac-arm64.dmg</code></p>
-                  <p>适用于 M1 / M2 / M3 / M4 等 Apple Silicon Mac。</p>
+                  <p class="dl-file"><code>TapMakerWork-0.1.2-mac-arm64.pkg</code></p>
+                  <p>适用于 M1 / M2 / M3 / M4 等 Apple Silicon Mac。请下 <strong>.pkg</strong>，不要用旧版 .dmg。</p>
                   <a
                     class="btn btn-secondary btn-sm"
-                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.1/TapMakerWork-0.1.1-mac-arm64.dmg
-                    target="_blank"
+                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/0.1.2/TapMakerWork-0.1.2-mac-arm64.pkg"
                     rel="noopener noreferrer"
                     data-dl="mac-arm64"
-                    >下载 .dmg</a
+                    >下载 .pkg</a
                   >
                 </article>
 
@@ -441,15 +508,14 @@
                     <h4>macOS · Intel</h4>
                     <span class="dl-plat-tag">x64</span>
                   </div>
-                  <p class="dl-file"><code>TapMakerWork-0.1.1-mac-x64.dmg</code></p>
+                  <p class="dl-file"><code>TapMakerWork-0.1.2-mac-x64.pkg</code></p>
                   <p>适用于 Intel 处理器 Mac；Rosetta 用户也可优先选 arm64。</p>
                   <a
                     class="btn btn-secondary btn-sm"
-                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.1/TapMakerWork-0.1.1-mac-x64.dmg
-                    target="_blank"
+                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/0.1.2/TapMakerWork-0.1.2-mac-x64.pkg"
                     rel="noopener noreferrer"
                     data-dl="mac-x64"
-                    >下载 .dmg</a
+                    >下载 .pkg</a
                   >
                 </article>
 
@@ -458,12 +524,11 @@
                     <h4>Windows</h4>
                     <span class="dl-plat-tag">x64</span>
                   </div>
-                  <p class="dl-file"><code>TapMakerWork-0.1.1-windows-x64.exe</code></p>
+                  <p class="dl-file"><code>TapMakerWork-0.1.2-windows-x64.exe</code></p>
                   <p>64 位安装向导（NSIS）。32 位系统暂不支持。</p>
                   <a
                     class="btn btn-secondary btn-sm"
-                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.1/TapMakerWork-0.1.1-windows-x64.exe
-                    target="_blank"
+                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/0.1.2/TapMakerWork-0.1.2-windows-x64.exe"
                     rel="noopener noreferrer"
                     data-dl="windows-x64"
                     >下载 .exe</a
@@ -472,8 +537,8 @@
               </div>
 
               <div class="dl-meta">
-                当前版本 <strong>v0.1.1</strong> ·
-                <a href="https://github.com/AndroidSix/TapMakerWork/releases/tag/v0.1.1" target="_blank" rel="noopener noreferrer">Release 页</a>
+                当前版本 <strong>v0.1.2</strong> ·
+                <a href="https://github.com/AndroidSix/TapMakerWork/releases/tag/0.1.2" target="_blank" rel="noopener noreferrer">Release 页</a>
                 · 镜像 Gitee<br />
                 主仓 · github.com/AndroidSix/TapMakerWork · 镜像 · gitee.com/AndroidSUP/tap-maker-work
               </div>
@@ -531,8 +596,8 @@
               <div class="dl-card">
                 <h4>macOS 安装受限时怎么办？</h4>
                 <p>
-                  macOS 对<strong>未配置正式 Developer ID 证书</strong>的安装包会提示「无法验证开发者」「已损坏」等限制。
-                  若右键「打开」或系统设置 → 隐私与安全性里<strong>没有「仍要打开」</strong>，请改用<strong>源码本地打包</strong>（产物在你自己机器上构建，便于通过本机允许策略）。
+                  macOS 请下载 <strong>.pkg</strong>（不要用旧版 .dmg）。未签名包被拦截后，到「系统设置 → 隐私与安全性」点
+                  <strong>「仍要打开」</strong>。若设置里没有该按钮，请改用<strong>源码本地打包</strong>。
                 </p>
                 <p>
                   步骤（详见主仓
@@ -541,12 +606,12 @@
                   <a href="https://github.com/AndroidSix/TapMakerWork/blob/main/docs/DESKTOP_RELEASE.md" target="_blank" rel="noopener noreferrer">DESKTOP_RELEASE.md</a>）：
                 </p>
                 <p class="dl-quote">
-                  1. 安装 Node.js（建议 LTS）<br />
+                  1. 安装 Node.js（建议 LTS / 22+）<br />
                   2. <code>git clone https://github.com/AndroidSix/TapMakerWork.git</code><br />
                   3. <code>cd TapMakerWork &amp;&amp; npm install</code><br />
-                  4. 仅想先跑起来：可双击 <code>outputs/launchers/TapMakerWork-macOS.command</code>，或 <code>npm install</code> 后 <code>npm run dev:web</code>（浏览器 127.0.0.1:4173）/ <code>npm run dev</code>（桌面宿主）<br />
+                  4. 仅想先跑起来：可双击 <code>outputs/launchers/TapMakerWork-macOS.command</code>，或 <code>npm run dev</code><br />
                   5. 自己打安装包：macOS 执行 <code>npm run dist:mac</code>（或 <code>npm run package:ide:mac</code>）<br />
-                  6. 产物目录 <code>outputs/installers</code>，打开 <code>TapMakerWork-*-mac-*.dmg</code> 安装
+                  6. 产物目录 <code>outputs/installers</code>，打开 <code>TapMakerWork-*-mac-*.pkg</code> 安装
                 </p>
                 <p>
                   若仍被隔离属性拦住，可在终端对 App 执行
@@ -801,29 +866,29 @@
           "mac-arm64": {
             os: "macOS",
             chip: "Apple 芯片",
-            file: "TapMakerWork-0.1.1-mac-arm64.dmg",
-            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.1/TapMakerWork-0.1.1-mac-arm64.dmg",
-            btn: "下载 macOS (Apple) .dmg",
-            desc: "为你推荐 Apple Silicon 的 DMG 安装包。",
+            file: "TapMakerWork-0.1.2-mac-arm64.pkg",
+            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/0.1.2/TapMakerWork-0.1.2-mac-arm64.pkg",
+            btn: "下载 macOS (Apple) .pkg",
+            desc: "为你推荐 Apple Silicon 的 PKG 安装包。",
           },
           "mac-x64": {
             os: "macOS",
             chip: "Intel",
-            file: "TapMakerWork-0.1.1-mac-x64.dmg",
-            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.1/TapMakerWork-0.1.1-mac-x64.dmg",
-            btn: "下载 macOS (Intel) .dmg",
-            desc: "为你推荐 Intel Mac 的 DMG 安装包。",
+            file: "TapMakerWork-0.1.2-mac-x64.pkg",
+            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/0.1.2/TapMakerWork-0.1.2-mac-x64.pkg",
+            btn: "下载 macOS (Intel) .pkg",
+            desc: "为你推荐 Intel Mac 的 PKG 安装包。",
           },
           "windows-x64": {
             os: "Windows",
             chip: "x64",
-            file: "TapMakerWork-0.1.1-windows-x64.exe",
-            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.1/TapMakerWork-0.1.1-windows-x64.exe",
-            btn: "下载 Windows 安装程序",
+            file: "TapMakerWork-0.1.2-windows-x64.exe",
+            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/0.1.2/TapMakerWork-0.1.2-windows-x64.exe",
+            btn: "下载 Windows .exe",
             desc: "为你推荐 64 位 Windows 安装向导。",
           },
         };
-        var RELEASES = "https://github.com/AndroidSix/TapMakerWork/releases/tag/v0.1.1";
+        var RELEASES = "https://github.com/AndroidSix/TapMakerWork/releases/tag/0.1.2";
 
         function markRecommended(key) {
           document.querySelectorAll(".dl-plat").forEach(function (el) {
@@ -839,12 +904,23 @@
           if (desc) desc.textContent = meta.desc + " 文件：" + meta.file;
           if (primary) {
             primary.textContent = meta.btn;
-            if (meta.url) primary.setAttribute("href", meta.url);
+            if (meta.url) {
+              primary.setAttribute("href", meta.url);
+              primary.removeAttribute("target");
+            }
           }
           var hero = document.getElementById("hero-download");
-          if (hero && meta.url) hero.setAttribute("href", meta.url);
+          if (hero && meta.url) {
+            hero.setAttribute("href", meta.url);
+            hero.textContent = meta.btn;
+            hero.removeAttribute("target");
+          }
           var navDl = document.getElementById("nav-download");
-          if (navDl && meta.url) navDl.setAttribute("href", meta.url);
+          if (navDl && meta.url) {
+            navDl.setAttribute("href", meta.url);
+            navDl.textContent = meta.btn;
+            navDl.removeAttribute("target");
+          }
           if (detected) {
             detected.textContent = "当前设备：" + meta.os + " · " + meta.chip;
             detected.setAttribute("data-state", "ok");

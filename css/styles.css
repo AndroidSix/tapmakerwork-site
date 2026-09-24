@@ -927,6 +927,72 @@ code {
   text-underline-offset: 2px;
 }
 
+/* ——— Built-in tools ——— */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.tool-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.tool-kicker {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-solid);
+}
+
+.tool-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.tool-card > p {
+  margin: 0 0 var(--space-md);
+  font-size: 14px;
+  color: var(--color-muted-foreground);
+  line-height: 1.65;
+}
+
+.tool-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.tool-card li {
+  font-size: 13px;
+  padding-left: 12px;
+  position: relative;
+  color: var(--color-foreground);
+}
+
+.tool-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--color-accent-solid);
+}
+
+.tools-player {
+  margin-top: 0;
+}
+
 /* ——— Roadmap ——— */
 .road-grid {
   display: grid;
@@ -1434,7 +1500,8 @@ code {
   .dl-grid,
   .split-2,
   .value-rail,
-  .road-grid {
+  .road-grid,
+  .tool-grid {
     grid-template-columns: 1fr;
   }
 
