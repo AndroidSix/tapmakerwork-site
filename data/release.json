@@ -1,0 +1,22 @@
+{
+  "tag": "v0.1.4",
+  "version": "0.1.4",
+  "url": "https://github.com/AndroidSix/TapMakerWork/releases/tag/v0.1.4",
+  "name": "TapMakerWork-0.1.4",
+  "publishedAt": "2026-09-28T11:35:11Z",
+  "syncedAt": "2026-09-28T11:45:19.983Z",
+  "assets": {
+    "mac-arm64": {
+      "file": "TapMakerWork-0.1.4-mac-arm64.pkg",
+      "url": "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.4/TapMakerWork-0.1.4-mac-arm64.pkg"
+    },
+    "mac-x64": {
+      "file": "TapMakerWork-0.1.4-mac-x64.pkg",
+      "url": "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.4/TapMakerWork-0.1.4-mac-x64.pkg"
+    },
+    "windows-x64": {
+      "file": "TapMakerWork-0.1.4-windows-x64.exe",
+      "url": "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.4/TapMakerWork-0.1.4-windows-x64.exe"
+    }
+  }
+}

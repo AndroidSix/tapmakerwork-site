@@ -64,7 +64,7 @@
               <a
                 class="btn btn-primary btn-sm"
                 id="nav-download"
-                href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.3/TapMakerWork-0.1.3-mac-arm64.pkg"
+                href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.4/TapMakerWork-0.1.4-mac-arm64.pkg"
                 rel="noopener noreferrer"
                 >下载本机安装包</a
               >
@@ -115,7 +115,7 @@
               <a
                 class="btn btn-primary"
                 id="hero-download"
-                href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.3/TapMakerWork-0.1.3-mac-arm64.pkg"
+                href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.4/TapMakerWork-0.1.4-mac-arm64.pkg"
                 rel="noopener noreferrer"
                 >下载本机安装包</a
               >
@@ -470,7 +470,7 @@
                 <a
                   class="btn btn-primary"
                   id="dl-primary"
-                  href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.3/TapMakerWork-0.1.3-mac-arm64.pkg"
+                  href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.4/TapMakerWork-0.1.4-mac-arm64.pkg"
                   rel="noopener noreferrer"
                   >下载本机安装包</a
                 >
@@ -496,11 +496,11 @@
                     <h4>macOS · Apple 芯片</h4>
                     <span class="dl-plat-tag">arm64</span>
                   </div>
-                  <p class="dl-file"><code>TapMakerWork-0.1.3-mac-arm64.pkg</code></p>
+                  <p class="dl-file"><code>TapMakerWork-0.1.4-mac-arm64.pkg</code></p>
                   <p>适用于 M1 / M2 / M3 / M4 等 Apple Silicon Mac。请下 <strong>.pkg</strong>，不要用旧版 .dmg。</p>
                   <a
                     class="btn btn-secondary btn-sm"
-                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.3/TapMakerWork-0.1.3-mac-arm64.pkg"
+                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.4/TapMakerWork-0.1.4-mac-arm64.pkg"
                     rel="noopener noreferrer"
                     data-dl="mac-arm64"
                     >下载 .pkg</a
@@ -512,11 +512,11 @@
                     <h4>macOS · Intel</h4>
                     <span class="dl-plat-tag">x64</span>
                   </div>
-                  <p class="dl-file"><code>TapMakerWork-0.1.3-mac-x64.pkg</code></p>
+                  <p class="dl-file"><code>TapMakerWork-0.1.4-mac-x64.pkg</code></p>
                   <p>适用于 Intel 处理器 Mac；Rosetta 用户也可优先选 arm64。</p>
                   <a
                     class="btn btn-secondary btn-sm"
-                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.3/TapMakerWork-0.1.3-mac-x64.pkg"
+                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.4/TapMakerWork-0.1.4-mac-x64.pkg"
                     rel="noopener noreferrer"
                     data-dl="mac-x64"
                     >下载 .pkg</a
@@ -528,11 +528,11 @@
                     <h4>Windows</h4>
                     <span class="dl-plat-tag">x64</span>
                   </div>
-                  <p class="dl-file"><code>TapMakerWork-0.1.3-windows-x64.exe</code></p>
+                  <p class="dl-file"><code>TapMakerWork-0.1.4-windows-x64.exe</code></p>
                   <p>64 位安装向导（NSIS）。32 位系统暂不支持。</p>
                   <a
                     class="btn btn-secondary btn-sm"
-                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.3/TapMakerWork-0.1.3-windows-x64.exe"
+                    href="https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.4/TapMakerWork-0.1.4-windows-x64.exe"
                     rel="noopener noreferrer"
                     data-dl="windows-x64"
                     >下载 .exe</a
@@ -541,8 +541,8 @@
               </div>
 
               <div class="dl-meta">
-                当前版本 <strong>v0.1.3</strong> ·
-                <a href="https://github.com/AndroidSix/TapMakerWork/releases/tag/v0.1.3" target="_blank" rel="noopener noreferrer">Release 页</a>
+                当前版本 <strong id="dl-version">v0.1.4</strong> ·
+                <a id="dl-release-link" href="https://github.com/AndroidSix/TapMakerWork/releases/tag/v0.1.4" target="_blank" rel="noopener noreferrer">Release 页</a>
                 · 镜像 Gitee<br />
                 主仓 · github.com/AndroidSix/TapMakerWork · 镜像 · gitee.com/AndroidSUP/tap-maker-work
               </div>
@@ -865,36 +865,59 @@
           });
         }
 
-        /* —— 安装包设备识别 —— */
+        /* —— 安装包：data/release.json + 设备识别 —— */
         var PLAT_META = {
           "mac-arm64": {
             os: "macOS",
             chip: "Apple 芯片",
-            file: "TapMakerWork-0.1.3-mac-arm64.pkg",
-            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.3/TapMakerWork-0.1.3-mac-arm64.pkg",
+            file: "TapMakerWork-0.1.4-mac-arm64.pkg",
+            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.4/TapMakerWork-0.1.4-mac-arm64.pkg",
             btn: "下载 macOS (Apple) .pkg",
             desc: "为你推荐 Apple Silicon 的 PKG 安装包。",
           },
           "mac-x64": {
             os: "macOS",
             chip: "Intel",
-            file: "TapMakerWork-0.1.3-mac-x64.pkg",
-            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.3/TapMakerWork-0.1.3-mac-x64.pkg",
+            file: "TapMakerWork-0.1.4-mac-x64.pkg",
+            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.4/TapMakerWork-0.1.4-mac-x64.pkg",
             btn: "下载 macOS (Intel) .pkg",
             desc: "为你推荐 Intel Mac 的 PKG 安装包。",
           },
           "windows-x64": {
             os: "Windows",
             chip: "x64",
-            file: "TapMakerWork-0.1.3-windows-x64.exe",
-            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.3/TapMakerWork-0.1.3-windows-x64.exe",
+            file: "TapMakerWork-0.1.4-windows-x64.exe",
+            url: "https://github.com/AndroidSix/TapMakerWork/releases/download/v0.1.4/TapMakerWork-0.1.4-windows-x64.exe",
             btn: "下载 Windows .exe",
             desc: "为你推荐 64 位 Windows 安装向导。",
           },
         };
-        var RELEASES = "https://github.com/AndroidSix/TapMakerWork/releases/tag/v0.1.3";
+        var recommendedKey = null;
+
+        function applyRelease(data) {
+          if (!data || !data.assets) return;
+          var tag = data.tag || ("v" + (data.version || ""));
+          Object.keys(PLAT_META).forEach(function (key) {
+            var asset = data.assets[key];
+            if (!asset) return;
+            PLAT_META[key].file = asset.file;
+            PLAT_META[key].url = asset.url;
+            var card = document.querySelector('.dl-plat[data-plat="' + key + '"]');
+            if (!card) return;
+            var fileEl = card.querySelector(".dl-file code");
+            if (fileEl) fileEl.textContent = asset.file;
+            var link = card.querySelector("a[data-dl]");
+            if (link) link.setAttribute("href", asset.url);
+          });
+          var ver = document.getElementById("dl-version");
+          if (ver) ver.textContent = tag;
+          var rel = document.getElementById("dl-release-link");
+          if (rel && data.url) rel.setAttribute("href", data.url);
+          if (recommendedKey) markRecommended(recommendedKey);
+        }
 
         function markRecommended(key) {
+          recommendedKey = key;
           document.querySelectorAll(".dl-plat").forEach(function (el) {
             el.classList.toggle("is-recommended", el.getAttribute("data-plat") === key);
           });
@@ -1006,6 +1029,13 @@
         }
 
         detectAndApply();
+        fetch("data/release.json", { cache: "no-cache" })
+          .then(function (res) {
+            if (!res.ok) throw new Error("release.json " + res.status);
+            return res.json();
+          })
+          .then(applyRelease)
+          .catch(function () {});
       })();
     </script>
   </body>

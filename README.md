@@ -32,13 +32,30 @@ css/styles.css                  # 样式（对齐 design-system 紫/粉）
 css/radar.css                   # 雷达看板
 js/radar-core.js                # 与桌面端对齐的计算
 js/radar-app.js                 # 看板交互
-data/                           # 榜单快照（脚本或 Actions 生成）
+data/                           # 榜单快照 + 安装包版本
+data/release.json               # 最新安装包版本（CI 同步）
 scripts/fetch-radar.mjs         # 拉取 TapTap / Steam 并写快照
+scripts/sync-release.mjs        # 从 GitHub Releases 同步版本
 assets/                         # 图标、赞助收款码、演示视频
 assets/demo/                    # 核心演示 + 内置工具录屏
 .github/workflows/pages.yml     # GitHub Pages 自动部署
 .github/workflows/radar-data.yml
+.github/workflows/sync-release.yml
 ```
+
+## 安装包版本同步
+
+创建于 2026-09-28
+
+下载区版本与直链由 `data/release.json` 驱动，页面加载时自动套用。
+
+本地手动同步：
+
+```bash
+node scripts/sync-release.mjs
+```
+
+Actions：`Sync latest release` 每 6 小时拉取 `AndroidSix/TapMakerWork` 的 latest release；有变化会自动提交并触发 Pages 部署。也可在 Actions 里手动跑，或从主仓发 `repository_dispatch`（`release-published`）即时同步。
 
 ## 新游雷达网页版
 
@@ -83,5 +100,5 @@ git push origin main
 
 - 主仓 / Issue / PR：**GitHub** `AndroidSix/TapMakerWork`
 - Gitee：国内镜像下载
-- 当前安装包版本：**v0.1.3**（macOS `.pkg` / Windows `.exe`；下载按钮按本机系统直链）
+- 当前安装包版本：**v0.1.4**（由 `data/release.json` 驱动；CI 从 GitHub Releases 自动同步）
 - 含社区 QQ 群、内置工具介绍（图片压缩 / 新游雷达）与后续开发计划摘要
