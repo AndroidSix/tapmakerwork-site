@@ -83,5 +83,5 @@ git push origin main
 
 - 主仓 / Issue / PR：**GitHub** `AndroidSix/TapMakerWork`
 - Gitee：国内镜像下载
-- 当前安装包版本：**v0.1.2**（macOS `.pkg` / Windows `.exe`；下载按钮按本机系统直链）
+- 当前安装包版本：**v0.1.3**（macOS `.pkg` / Windows `.exe`；下载按钮按本机系统直链）
 - 含社区 QQ 群、内置工具介绍（图片压缩 / 新游雷达）与后续开发计划摘要
