@@ -27,11 +27,32 @@ TapMakerWork（TapTap Maker 第三方桌面 IDE）产品官网静态站。
 
 ```text
 index.html                      # 单页官网
+radar.html                      # 新游雷达网页版
 css/styles.css                  # 样式（对齐 design-system 紫/粉）
+css/radar.css                   # 雷达看板
+js/radar-core.js                # 与桌面端对齐的计算
+js/radar-app.js                 # 看板交互
+data/                           # 榜单快照（脚本或 Actions 生成）
+scripts/fetch-radar.mjs         # 拉取 TapTap / Steam 并写快照
 assets/                         # 图标、赞助收款码、演示视频
 assets/demo/                    # 核心演示 + 内置工具录屏
 .github/workflows/pages.yml     # GitHub Pages 自动部署
+.github/workflows/radar-data.yml
 ```
+
+## 新游雷达网页版
+
+创建于 2026-09-28
+
+页面：`radar.html`。榜单、每日上线、洞察、分析台和可视化与桌面端同一套计算。浏览器不能直连 TapTap / Steam，页面读取 `data/` 里的快照。
+
+本地更新快照：
+
+```bash
+node scripts/fetch-radar.mjs
+```
+
+推到 `main` 后，Actions 里的 `Refresh radar snapshot` 大约每 6 小时拉一次并重新发布 Pages。
 
 ## 本地预览
 
