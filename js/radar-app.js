@@ -568,6 +568,12 @@ function renderChrome() {
   const toInput = document.getElementById("radar-to");
   if (fromInput && document.activeElement !== fromInput) fromInput.value = state.dailyFrom;
   if (toInput && document.activeElement !== toInput) toInput.value = state.dailyTo;
+  document.querySelectorAll("#radar-ranges [data-range]").forEach((button) => {
+    const days = Number(button.getAttribute("data-range"));
+    const range = Number.isFinite(days) ? defaultDailyRange(days) : null;
+    const on = Boolean(range && range.from === state.dailyFrom && range.to === state.dailyTo);
+    button.setAttribute("aria-pressed", on ? "true" : "false");
+  });
 }
 
 function render() {
