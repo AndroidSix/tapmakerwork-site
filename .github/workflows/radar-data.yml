@@ -10,15 +10,13 @@ permissions:
   pages: write
   id-token: write
 
+# 与 pages.yml 共用同一组，避免两个部署抢同一 Pages 环境
 concurrency:
-  group: pages-radar
+  group: pages
   cancel-in-progress: false
 
 jobs:
   refresh:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,6 +38,36 @@ jobs:
         with:
           path: .
 
+  deploy:
+    needs: refresh
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      # artifact 上传成功后，deploy-pages 偶发读不到元数据；失败则短暂等待再部署一次
       - name: Deploy to GitHub Pages
-        id: deployment
+        id: attempt1
+        continue-on-error: true
         uses: actions/deploy-pages@v4
+
+      - name: Brief wait before retry
+        if: steps.attempt1.outcome == 'failure'
+        run: sleep 30
+
+      - name: Deploy to GitHub Pages (retry)
+        id: attempt2
+        if: steps.attempt1.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+
+      - name: Resolve deployment URL
+        id: deployment
+        run: |
+          if [ "${{ steps.attempt1.outcome }}" = "success" ]; then
+            echo "page_url=${{ steps.attempt1.outputs.page_url }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ steps.attempt2.outcome }}" = "success" ]; then
+            echo "page_url=${{ steps.attempt2.outputs.page_url }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "Both deploy attempts failed" >&2
+            exit 1
+          fi
