@@ -277,8 +277,19 @@ function renderDaily() {
         )
         .join("")
     : emptyRow(8, `该范围内没有匹配「${state.query || "全部"}」的上线游戏`);
-  const warn = report.truncated ? `<p class="radar-message">样本分页已到上限，更早日期可能不完整。请把范围收在近 30 天内。</p>` : "";
-  return `${warn}
+  const coverageFrom = state.launches?.from;
+  const coverageTo = state.launches?.to;
+  const outsideCoverage =
+    Boolean(coverageFrom && coverageTo) && (state.dailyTo < coverageFrom || state.dailyFrom > coverageTo);
+  const warns = [];
+  if (outsideCoverage) {
+    warns.push(
+      `<p class="radar-message">当前快照只覆盖 ${esc(coverageFrom)} 至 ${esc(coverageTo)}，所选 ${esc(state.dailyFrom)} 至 ${esc(state.dailyTo)} 没有样本。请点「重新加载快照」，或把日期改到快照覆盖范围内。</p>`
+    );
+  } else if (report.truncated) {
+    warns.push(`<p class="radar-message">样本分页已到上限，更早日期可能不完整。请把范围收在近 30 天内。</p>`);
+  }
+  return `${warns.join("")}`}]}<|tool_call_begin|>{
     <div class="radar-stats">
       <article class="radar-stat"><em>上线数</em><strong>${formatNum(report.total)}</strong><span>已开分 ${formatNum(report.scoredCount)}</span></article>
       <article class="radar-stat"><em>均分</em><strong>${report.avgScore ?? "—"}</strong><span>总热度 ${formatNum(report.totalHits)}</span></article>

@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -29,6 +29,19 @@ jobs:
 
       - name: Fetch TapTap and Steam boards
         run: node scripts/fetch-radar.mjs
+
+      # 必须写回仓库：否则下一次 pages.yml 会用旧 data/*.json 覆盖线上快照
+      - name: Commit snapshot if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/radar-snapshot.json data/radar-launches.json
+          if git diff --cached --quiet; then
+            echo "Radar snapshot unchanged"
+          else
+            git commit -m "chore: refresh radar snapshot data"
+            git push
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
